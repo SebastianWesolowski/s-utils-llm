@@ -8,6 +8,9 @@
     "CHANGELOG.md"
   ],
   "scripts": {
+    "s-update": "s-update --remoteRepository='https://github.com/SebastianWesolowski/s-template/tree/main/templates/startetNpmPackage/node'",
+    "s-build": "s-build --remoteRepository='https://github.com/SebastianWesolowski/s-template/tree/main/templates/startetNpmPackage/node'",
+    "s-init": "s-init --remoteRepository='https://github.com/SebastianWesolowski/s-template/tree/main/templates/startetNpmPackage/node'",
     "start:dev": "cross-env SDEBUG=true tsx watch ./src/index.ts",
     "build": "run-s build:clean && npx rollup -c rollup.config.mjs",
     "build:clean": "rm -rf ./lib/",
@@ -115,6 +118,7 @@
     "rollup-plugin-copy": "^3.5.0",
     "rollup-plugin-typescript2": "^0.36.0",
     "s-prettier": "^1.1.0",
+    "s-update-manager": "^1.0.0-dev.46",
     "semantic-release": "^21.0.1",
     "ts-jest": "29.2.5",
     "ts-node": "^10.9.2",

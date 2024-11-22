@@ -1,0 +1,13 @@
+.github/FUNDING.yml
+.github/nodejs.version
+.nvmrc
+LICENSE
+README.md
+package.json
+tools/addDependency.js
+docs/
+todo.md
+tools/cleanCustomize.sh
+tools/customize.example.json
+tools/customize.json
+tools/customize.sh
