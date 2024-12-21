@@ -12,14 +12,15 @@
     "s-build": "s-build --remoteRepository='https://github.com/SebastianWesolowski/s-template/tree/main/templates/startetNpmPackage/node'",
     "s-init": "s-init --remoteRepository='https://github.com/SebastianWesolowski/s-template/tree/main/templates/startetNpmPackage/node'",
     "start:dev": "cross-env SDEBUG=true tsx watch ./src/index.ts",
-    "build": "run-s build:clean && npx rollup -c rollup.config.mjs",
+    "build": "run-s build:clean && yarn rollup -c rollup.config.mjs",
     "build:clean": "rm -rf ./lib/",
-    "build:prod": "run-s build:clean && npx rollup -c rollup.config.build.mjs",
+    "build:prod": "run-s build:clean && yarn rollup -c rollup.config.build.mjs",
     "build:package": "[ -d ./dist ] || mkdir ./dist && run-s build:prod build:package:preparePackage build:package:archivePackage build:package:addModuleType build:package:prepareRealProject",
     "build:package:preparePackage": "npm pack --pack-destination ./dist",
     "build:package:addModuleType": "node ./tools/addModuleType.js",
     "build:package:prepareRealProject": "PACKAGE_SOURCE=\"$(ls -t ./dist/*.tgz | head -n 1)\" node ./tools/addDependency.js && cd ./test/realProject && yarn install && yarn test",
     "build:package:archivePackage": "rm -rf ./dist/package && [ -d ./dist/package ] || mkdir ./dist/package && tar -xvzf \"$(ls -t ./dist/*.tgz | head -n 1)\" -C ./dist",
+    "build:release": "semantic-release",
     "eslint:check": "eslint --no-error-on-unmatched-pattern './src/**/*.+(js|jsx|ts|tsx)'",
     "eslint:fix": "eslint --no-error-on-unmatched-pattern './src/**/*.+(js|jsx|ts|tsx)' --fix",
     "husky:commit-msg": "commitlint --edit $GIT_PARAMS",
@@ -119,7 +120,7 @@
     "rollup-plugin-typescript2": "^0.36.0",
     "s-prettier": "^1.1.0",
     "s-update-manager": "^1.0.0-dev.48",
-    "semantic-release": "^21.0.1",
+    "semantic-release": "^23.0.3",
     "ts-jest": "29.2.5",
     "ts-node": "^10.9.2",
     "ts-node-dev": "^2.0.0",
@@ -131,5 +132,8 @@
     "commitizen": {
       "path": "node_modules/cz-git"
     }
+  },
+  "dependencies": {
+    "openai": "^4.77.0"
   }
 }
