@@ -1,9 +1,4 @@
 {
   "indent": 2,
-  "remove": [
-    "scripts",
-    "keywords",
-    "devDependencies",
-    "config"
-  ]
+  "remove": ["scripts", "keywords", "devDependencies", "config"]
 }

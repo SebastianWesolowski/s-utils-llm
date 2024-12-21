@@ -54,7 +54,7 @@
     "url": "https://github.com/SebastianWesolowski"
   },
   "engines": {
-    "node": ">=20.11.0"
+    "node": ">=20.17.0"
   },
   "keywords": [
     "boilerplate",
@@ -118,7 +118,7 @@
     "rollup-plugin-copy": "^3.5.0",
     "rollup-plugin-typescript2": "^0.36.0",
     "s-prettier": "^1.1.0",
-    "s-update-manager": "^1.0.0-dev.46",
+    "s-update-manager": "^1.0.0-dev.48",
     "semantic-release": "^21.0.1",
     "ts-jest": "29.2.5",
     "ts-node": "^10.9.2",

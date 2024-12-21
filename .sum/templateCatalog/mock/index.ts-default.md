@@ -1,3 +1,3 @@
 export const defaultMocks = {
-  mocks: 'fortest'
-}
+  mocks: 'fortest',
+};

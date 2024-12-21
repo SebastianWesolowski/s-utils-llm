@@ -55,7 +55,7 @@ replace_in_file "PLACEHOLDER_PAGE_AUTHOR" "$PAGE_AUTHOR" "package.json"
 replace_in_file "PLACEHOLDER_PAGE_AUTHOR" "$PAGE_AUTHOR" "LICENSE"
 
 CURRENT_YEAR=$(date +%Y)
-replace_in_file "CURRENT_YEAR" "$CURRENT_YEAR" "LICENSE"
+replace_in_file "PLACEHOLDER_CURRENT_YEAR" "$CURRENT_YEAR" "LICENSE"
 
 replace_in_file "PLACEHOLDER_GITHUB_USER" "$GITHUB_USER" "package.json"
 replace_in_file "PLACEHOLDER_GITHUB_USER" "$GITHUB_USER" "README.md"

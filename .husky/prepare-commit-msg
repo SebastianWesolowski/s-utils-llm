@@ -47,7 +47,7 @@ update_commit_message() {
 
 # Skip processing for amend commits
 if [ "$commit_source" = "commit" ] || [ "$commit_source" = "message" ]; then
-    echo "[🐶 Husky] ⏭️ Amend commit detected. Skipping prepare-commit-msg script."
+    echo "[🐶 Husky] Amend commit detected. Skipping prepare-commit-msg script."
     echo "[🐶 Husky] Done ✅ prepare-commit-msg hook..."
     exit 0
 fi

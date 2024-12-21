@@ -9,9 +9,8 @@ remove_files_in_directory() {
   local directory="$1"
 
   if [ -d "$directory" ]; then
-    find "$directory" -type f -delete
-    remove_file "$directory"
-    echo "Files in the $directory and its subdirectories were deleted."
+    rm -rf "$directory"
+    echo "Directory $directory and all its contents were deleted."
   else
     echo "The directory $directory does not exist."
   fi

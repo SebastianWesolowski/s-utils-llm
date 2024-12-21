@@ -13,7 +13,6 @@ if [ "$current_branch" != "main" ]; then
     # Check if current branch is behind main
     if git merge-base --is-ancestor HEAD origin/main; then
         echo "✅ Your branch is up to date with main"
-        yarn husky:pre-commit
     else
         behind_commits=$(git rev-list HEAD..origin/main --count)
         if [ "$behind_commits" -gt 0 ]; then
@@ -24,6 +23,7 @@ if [ "$current_branch" != "main" ]; then
     fi
 fi
 
+yarn husky:pre-commit
 echo \[🐶 Husky] Done ✅ pre-commit hook...\
 
 exit 0

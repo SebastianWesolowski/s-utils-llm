@@ -55,6 +55,6 @@
         "STYPE": "init"
       },
       "console": "integratedTerminal"
-    },
+    }
   ]
 }
