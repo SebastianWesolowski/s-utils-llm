@@ -1,3 +1,12 @@
+## [1.2.0-dev.1](https://github.com/SebastianWesolowski/s-utils-llm/compare/v1.1.0...v1.2.0-dev.1) (December 22, 2024)
+
+
+### Other tasks
+
+- ✨ [] initopenAIservice ([8ded95b](https://github.com/SebastianWesolowski/s-utils-llm/commit/8ded95bd0be4c7e913c116e6dec8a2b817338239))
+- 🔧 [] updatesumtemplate ([393c9d4](https://github.com/SebastianWesolowski/s-utils-llm/commit/393c9d4014409080b292657aea718f77ad01e181))
+- 🔧 [] addSUMupadater ([7ddeedd](https://github.com/SebastianWesolowski/s-utils-llm/commit/7ddeedd97cd8f81eb702819c3a4079ca18287c26))
+
 ## [1.1.0](https://github.com/SebastianWesolowski/s-utils-llm/compare/v1.0.0...v1.1.0) (November 22, 2024)
 
 
