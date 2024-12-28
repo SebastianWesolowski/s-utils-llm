@@ -1,3 +1,10 @@
+## [1.2.0-dev.2](https://github.com/SebastianWesolowski/s-utils-llm/compare/v1.2.0-dev.1...v1.2.0-dev.2) (December 28, 2024)
+
+
+### Other tasks
+
+- 🐛 [] exportclass ([fffe232](https://github.com/SebastianWesolowski/s-utils-llm/commit/fffe2323ec6d8f5275f31ba073da32a2b202ce44))
+
 ## [1.2.0-dev.1](https://github.com/SebastianWesolowski/s-utils-llm/compare/v1.1.0...v1.2.0-dev.1) (December 22, 2024)
 
 
