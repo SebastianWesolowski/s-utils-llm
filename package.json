@@ -143,6 +143,8 @@
     }
   },
   "dependencies": {
+    "@types/axios": "^0.14.4",
+    "axios": "^1.7.9",
     "openai": "^4.77.0"
   }
 }
