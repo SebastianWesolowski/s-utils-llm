@@ -1,3 +1,5 @@
+import axios, { AxiosError } from 'axios';
+import { AxiosInstance } from 'axios';
 import * as dotenv from 'dotenv';
 // import type OpenAI from 'openai';
 // import type { ChatCompletionMessageParam } from 'openai/resources/chat/completions';
@@ -6,6 +8,7 @@ import * as dotenv from 'dotenv';
 
 // import { prepareAnswerQauestinPrompt } from '../prompts/prepareAnswerQauestinPrompt';
 import { ApiUtils } from '@/utils';
+import { CentralaReportPayload, ENDPOINTS } from '@/utils/endpoints';
 
 dotenv.config();
 
@@ -13,14 +16,52 @@ export class CentralaService {
   private apiUtils: ApiUtils;
   private baseUrl: string;
   private apiKey: string;
+
+  private client: AxiosInstance;
+
   // private openaiService: OpenAIService;
 
-  constructor() {
+  constructor(baseURL = '', headers: Record<string, string> = {}) {
     this.apiKey = process.env.PERSONAL_API_KEY || '';
     this.baseUrl = 'https://centrala.ag3nts.org';
     this.apiUtils = new ApiUtils(this.baseUrl);
 
-    // this.openaiService = new OpenAIService();
+    this.client = axios.create({
+      baseURL,
+      headers,
+    });
+  }
+  // this.openaiService = new OpenAIService();
+
+  /**
+   * Sends a report to Centrala
+   * @param task Task identifier
+   * @param apiKey API key
+   * @param answer Answer data (will be properly JSON formatted)
+   */
+  async sendCentralaReport<T = unknown>(req: Request & { body: { task?: string } }, answer: T): Promise<any> {
+    const task = req.body.task;
+
+    if (!task) {
+      throw new Error('Task ID is required');
+    }
+
+    const payload: CentralaReportPayload = {
+      task,
+      apikey: this.apiKey,
+      answer, // Direct assignment ensures proper JSON formatting
+    };
+
+    try {
+      const response = await this.client.post(`${ENDPOINTS.CENTRALA.BASE}${ENDPOINTS.CENTRALA.REPORT}`, payload, {
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
+      return response.data;
+    } catch (error) {
+      throw this.handleError(error as AxiosError);
+    }
   }
 
   async fetchFile(endpoint: string): Promise<unknown> {
@@ -36,6 +77,19 @@ export class CentralaService {
       console.error('Error fetching file:', error);
       throw error;
     }
+  }
+
+  private handleError(error: AxiosError): Error {
+    if (error.response) {
+      console.error('Error response:', error.response.data);
+      console.error('Status:', error.response.status);
+      console.error('Headers:', error.response.headers);
+    } else if (error.request) {
+      console.error('No response received:', error.request);
+    } else {
+      console.error('Error setting up request:', error.message);
+    }
+    return error;
   }
 
   //   async fetchData(): Promise<CentralaResponse> {
