@@ -1,3 +1,10 @@
+## [1.2.0-dev.5](https://github.com/SebastianWesolowski/s-utils-llm/compare/v1.2.0-dev.4...v1.2.0-dev.5) (December 28, 2024)
+
+
+### Other tasks
+
+- ✨ [] sendCentralaReport ([49a173f](https://github.com/SebastianWesolowski/s-utils-llm/commit/49a173faa929c740c30d4edc925f6a05da6966a8))
+
 ## [1.2.0-dev.4](https://github.com/SebastianWesolowski/s-utils-llm/compare/v1.2.0-dev.3...v1.2.0-dev.4) (December 28, 2024)
 
 
