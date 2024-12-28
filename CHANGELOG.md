@@ -1,3 +1,10 @@
+## [1.2.0-dev.4](https://github.com/SebastianWesolowski/s-utils-llm/compare/v1.2.0-dev.3...v1.2.0-dev.4) (December 28, 2024)
+
+
+### Other tasks
+
+- ✨ [] addCentralaServicefetchFile ([953240a](https://github.com/SebastianWesolowski/s-utils-llm/commit/953240a35ae3e83ac467b203ddeb8aa793181f2c))
+
 ## [1.2.0-dev.3](https://github.com/SebastianWesolowski/s-utils-llm/compare/v1.2.0-dev.2...v1.2.0-dev.3) (December 28, 2024)
 
 
