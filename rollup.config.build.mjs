@@ -2,31 +2,47 @@ import babel from '@rollup/plugin-babel';
 import commonjs from '@rollup/plugin-commonjs';
 import json from '@rollup/plugin-json';
 import { nodeResolve } from '@rollup/plugin-node-resolve';
-import { glob } from 'glob';
 import typescript from 'rollup-plugin-typescript2';
 
-const files = glob.sync('src/**/*.ts', { nodir: true });
+const input = 'src/index.ts';
 
-export default {
-  input: files,
-  output: {
-    format: 'esm',
-    dir: 'lib',
-    preserveModules: true,
-    entryFileNames: '[name].mjs', // Main file name
-    chunkFileNames: '[name]-[hash].mjs', // Chunk file name
+export default [
+  // ESM build
+  {
+    input,
+    output: {
+      file: 'lib/index.mjs',
+      format: 'esm',
+      sourcemap: true,
+    },
+    external: ['openai'],
+    plugins: [
+      json(),
+      nodeResolve(),
+      commonjs(),
+      typescript({
+        tsconfig: 'tsconfig.build.json',
+        useTsconfigDeclarationDir: true,
+      }),
+    ],
   },
-  plugins: [
-    json(),
-    nodeResolve(),
-    babel({
-      // Syntax conversion
-      babelHelpers: 'bundled',
-      exclude: 'node_modules/**', // Excluding conversion for files in node_modules
-    }),
-    commonjs(),
-    typescript({
-      tsconfig: 'tsconfig.json',
-    }),
-  ],
-};
+  // CommonJS build
+  {
+    input,
+    output: {
+      file: 'lib/index.cjs',
+      format: 'cjs',
+      sourcemap: true,
+    },
+    external: ['openai'],
+    plugins: [
+      json(),
+      nodeResolve(),
+      commonjs(),
+      typescript({
+        tsconfig: 'tsconfig.build.json',
+        useTsconfigDeclarationDir: true,
+      }),
+    ],
+  },
+];

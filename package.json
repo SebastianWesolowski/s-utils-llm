@@ -3,6 +3,15 @@
   "version": "0.0.0-development",
   "description": "s-utils-llm is utils for working with LLM models",
   "main": "./lib/index.js",
+  "module": "./lib/index.mjs",
+  "types": "./lib/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./lib/index.mjs",
+      "require": "./lib/index.cjs",
+      "types": "./lib/index.d.ts"
+    }
+  },
   "files": [
     "lib/**/*",
     "CHANGELOG.md"

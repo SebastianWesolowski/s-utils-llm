@@ -1,1 +1,1 @@
-export * from './openAI/OpenAIService';
+export { OpenAIService } from './openAI/OpenAIService';
