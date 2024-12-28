@@ -1,3 +1,10 @@
+## [1.2.0-dev.3](https://github.com/SebastianWesolowski/s-utils-llm/compare/v1.2.0-dev.2...v1.2.0-dev.3) (December 28, 2024)
+
+
+### Other tasks
+
+- 🐛 [] buildprocess ([b57b4ed](https://github.com/SebastianWesolowski/s-utils-llm/commit/b57b4ede8dc7a5d3505b4d62f8587ea244339a4f))
+
 ## [1.2.0-dev.2](https://github.com/SebastianWesolowski/s-utils-llm/compare/v1.2.0-dev.1...v1.2.0-dev.2) (December 28, 2024)
 
 
