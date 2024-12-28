@@ -1,7 +1,7 @@
 import OpenAI from 'openai';
 import fs from 'fs';
 import path from 'path';
-import { OpenAIService } from '../../opanAI/OpenAIService';
+import { OpenAIService } from '../OpenAIService';
 
 // Mock OpenAI and fs modules
 jest.mock('openai');
