@@ -16,7 +16,6 @@ export class CentralaService {
   private apiUtils: ApiUtils;
   private baseUrl: string;
   private apiKey: string;
-
   private client: AxiosInstance;
 
   // private openaiService: OpenAIService;
