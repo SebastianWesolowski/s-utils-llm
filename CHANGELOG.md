@@ -1,3 +1,10 @@
+## [1.2.0-dev.6](https://github.com/SebastianWesolowski/s-utils-llm/compare/v1.2.0-dev.5...v1.2.0-dev.6) (January 03, 2025)
+
+
+### Other tasks
+
+- ✨ [] getData ([81d5671](https://github.com/SebastianWesolowski/s-utils-llm/commit/81d5671a91b519ff4db4093e0aa900d68fd7139b))
+
 ## [1.2.0-dev.5](https://github.com/SebastianWesolowski/s-utils-llm/compare/v1.2.0-dev.4...v1.2.0-dev.5) (December 28, 2024)
 
 
