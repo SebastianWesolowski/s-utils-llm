@@ -78,6 +78,21 @@ export class CentralaService {
     }
   }
 
+  async getData(file: string): Promise<unknown> {
+    try {
+      if (!this.apiKey) {
+        throw new Error('PERSONAL_API_KEY is not set in environment variables');
+      }
+
+      const finalEndpoint = `/dane/${file}`;
+      const response = await this.apiUtils.get<unknown>(finalEndpoint);
+      return response;
+    } catch (error) {
+      console.error('Error fetching file:', error);
+      throw error;
+    }
+  }
+
   private handleError(error: AxiosError): Error {
     if (error.response) {
       console.error('Error response:', error.response.data);
