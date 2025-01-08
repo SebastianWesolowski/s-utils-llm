@@ -1,3 +1,10 @@
+## [1.2.0-dev.8](https://github.com/SebastianWesolowski/s-utils-llm/compare/v1.2.0-dev.7...v1.2.0-dev.8) (January 08, 2025)
+
+
+### Other tasks
+
+- ✨ [] speechToText ([9ddf947](https://github.com/SebastianWesolowski/s-utils-llm/commit/9ddf9470bc1b6c473f69c012840b5aa8012b44e9))
+
 ## [1.2.0-dev.7](https://github.com/SebastianWesolowski/s-utils-llm/compare/v1.2.0-dev.6...v1.2.0-dev.7) (January 08, 2025)
 
 
