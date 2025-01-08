@@ -80,4 +80,39 @@ export class OpenAIService {
       throw error;
     }
   }
+
+  /**
+   * Transcribes audio file to text using OpenAI's Whisper model
+   * @param audio - Audio file to transcribe
+   * @param options - Optional configuration for transcription
+   * @param options.language - Language code of the audio (default: 'en')
+   * @param options.model - Whisper model to use (default: 'whisper-1')
+   * @param options.responseFormat - Format of the response (default: 'json')
+   * @returns Transcribed text from the audio file
+   * @throws Error if transcription fails
+   */
+  async speechToText(
+    audio: File,
+    options: {
+      language?: string;
+      model?: string;
+      responseFormat?: 'json' | 'text' | 'srt' | 'verbose_json' | 'vtt';
+    } = {}
+  ): Promise<string> {
+    const { language = 'en', model = 'whisper-1', responseFormat = 'json' } = options;
+
+    try {
+      const response = await this.openai.audio.transcriptions.create({
+        file: audio,
+        model,
+        language,
+        response_format: responseFormat,
+      });
+
+      return response.text;
+    } catch (error) {
+      console.error('Error transcribing audio:', error);
+      throw error;
+    }
+  }
 }
