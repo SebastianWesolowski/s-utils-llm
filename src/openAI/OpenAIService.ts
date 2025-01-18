@@ -6,6 +6,16 @@ import type { ChatCompletionMessageParam } from 'openai/resources/chat/completio
  * @class OpenAIService
  * @description Handles chat completions with optional streaming and JSON mode support
  */
+
+/**
+ * Generic type for OpenAI chat completion responses
+ */
+interface ChatCompletionResponse<T> {
+  parsedContent?: T;
+  rawContent?: string;
+  fullResponse?: OpenAI.Chat.Completions.ChatCompletion;
+}
+
 export class OpenAIService {
   private openai: OpenAI;
 
@@ -112,6 +122,81 @@ export class OpenAIService {
       return response.text;
     } catch (error) {
       console.error('Error transcribing audio:', error);
+      throw error;
+    }
+  }
+
+  /**
+   * Creates a chat completion with customizable prompts and response handling
+   * @template T - Type of the expected parsed response (for JSON responses)
+   * @param {Object} params - Parameters for the completion
+   * @param {string} params.userPrompt - The user's input prompt
+   * @param {string} params.systemPrompt - The system instruction prompt
+   * @param {boolean} [params.jsonMode=false] - Whether to force JSON output format
+   * @param {boolean} [params.includeRaw=false] - Whether to include raw response content
+   * @param {boolean} [params.includeFull=false] - Whether to include full OpenAI response
+   * @returns {Promise<ChatCompletionResponse<T>>} Formatted response based on parameters
+   * @throws {Error} If the API request fails or JSON parsing fails when jsonMode is true
+   */
+  async createCompletion<T = unknown>({
+    userPrompt,
+    systemPrompt,
+    jsonMode = false,
+    includeRaw = false,
+    includeFull = false,
+  }: {
+    userPrompt: string;
+    systemPrompt: string;
+    jsonMode?: boolean;
+    includeRaw?: boolean;
+    includeFull?: boolean;
+  }): Promise<ChatCompletionResponse<T>> {
+    try {
+      const response = await this.openai.chat.completions.create({
+        model: 'gpt-4',
+        messages: [
+          { role: 'system', content: systemPrompt },
+          { role: 'user', content: userPrompt },
+        ],
+        response_format: jsonMode ? { type: 'json_object' } : { type: 'text' },
+      });
+
+      const content = response.choices[0]?.message?.content;
+
+      if (!content) {
+        throw new Error('No content received from OpenAI');
+      }
+
+      const result: ChatCompletionResponse<T> = {};
+
+      // Handle JSON parsing if jsonMode is enabled
+      if (jsonMode) {
+        try {
+          result.parsedContent = JSON.parse(content) as T;
+        } catch (parseError) {
+          console.error('Error parsing JSON response:', parseError);
+          throw new Error('Failed to parse OpenAI response as JSON');
+        }
+      }
+
+      // Include raw content if requested
+      if (includeRaw) {
+        result.rawContent = content;
+      }
+
+      // Include full response if requested
+      if (includeFull) {
+        result.fullResponse = response;
+      }
+
+      // If not in jsonMode, set raw content as parsedContent
+      if (!jsonMode) {
+        result.parsedContent = content as unknown as T;
+      }
+
+      return result;
+    } catch (error) {
+      console.error('Error in OpenAI completion:', error);
       throw error;
     }
   }
