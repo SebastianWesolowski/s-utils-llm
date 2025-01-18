@@ -1,3 +1,10 @@
+## [1.2.0-dev.9](https://github.com/SebastianWesolowski/s-utils-llm/compare/v1.2.0-dev.8...v1.2.0-dev.9) (January 18, 2025)
+
+
+### Other tasks
+
+- ✨ [] addcreateCompletion ([be3a25b](https://github.com/SebastianWesolowski/s-utils-llm/commit/be3a25bf4cbb5dd1301bfaed1f91fff41a6647c5))
+
 ## [1.2.0-dev.8](https://github.com/SebastianWesolowski/s-utils-llm/compare/v1.2.0-dev.7...v1.2.0-dev.8) (January 08, 2025)
 
 
